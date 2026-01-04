@@ -1,0 +1,536 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.all {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+}
+.menus_div {
+    /* position: fixed; */
+    display: flex;
+    z-index: -2;
+}
+.menus_div:hover + .main {
+    filter: grayscale(100%);
+}
+.all:has(.main:hover) .menus_div {
+    filter: grayscale(100%);
+}
+
+.menu {
+    width: 23px;
+    height: 100%;
+    word-wrap: break-word;
+    font-size: 40pt;
+    color: blueviolet;
+    background-color: white;
+    position: sticky;
+    text-align: center;
+    left: 0;
+    z-index: 2;
+}
+.menu p {
+    margin: 0;
+}
+.menu input {
+    position: absolute;
+    opacity: 0;      /* hide it but keep it clickable */
+    cursor: pointer;
+    inset: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+.menu:has(:checked) + .description {
+    width: 20vw;
+    min-width: 250px;
+    /* padding: 1ch; */
+    /* z-index: 1; */
+}
+
+.description {
+    /* font-family: 'Recursive', monospace; */
+    font-family: "ABCRepro-Medium";
+    font-size: 12pt;
+    line-height: 13pt;
+    width: 0;
+    transition: width .5s;
+    padding: 0;
+    background-color: white;
+    /* z-index: -1; */
+    position: sticky;
+    left: 0;
+}
+.description p:first-child {
+    color: blueviolet;
+    text-indent: 0;
+    margin-top: 20px;
+}
+.description p {
+    text-indent: 2ch;
+    margin: 0;
+    /* hyphens: auto; */
+}
+.description p:last-child {
+    text-indent: 0;
+    font-size: 8pt;
+    line-height: 9pt;
+}
+
+
+.menu:has(:checked) + .howto {
+    width: 30vw;
+    min-width: 250px;
+    padding: 3px;
+    /* z-index: 1; */
+}
+.howto {
+    font-family: "ABCRepro-Medium";
+    font-size: 12pt;
+    line-height: 13pt;
+    width: 0;
+    transition: width .5s;
+    padding: 0;
+    background-color: white;
+    /* z-index: -1; */
+    position: sticky;
+    left: 0;
+    overflow-y: scroll;
+}
+.howto p:first-child {
+    color: blueviolet;
+    text-indent: 0;
+    margin-top: 20px;
+}
+.howto p:last-child {
+    margin-bottom: 20px;
+}
+.howto p {
+    text-indent: 2ch;
+    margin: 0;
+}
+.howto .howto_topic {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-style: dashed;
+}
+.howto .howto_topic:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+.howto details[open] .howto_topic {
+    color: blueviolet;
+}
+.howto details::details-content {
+  opacity: 0;
+  transition:
+    opacity 600ms,
+    content-visibility 600ms allow-discrete;
+}
+.howto details[open]::details-content {
+    opacity: 1;
+}
+
+/* inside drop down menu */
+summary {
+  list-style: none;
+  text-indent: 2ch;
+}
+.howto_ipa {
+    font-family: "ABCRepro-Medium",Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 35pt;
+    color: blueviolet;
+    /* padding-left: 55%; */
+    text-align: right;
+    padding-right: 15%;
+    margin-bottom: 0;
+}
+.howto_train {
+    font-family: "TrainSpeech";
+    font-size: 32pt;
+    color: black;
+    border-style: dashed dashed none dashed;
+    border-width: thin;
+}
+.howto details:first-of-type .howto_ipa .howto_train {
+    border-style: dashed;
+    border-color: blueviolet;
+}
+.howto details:first-of-type .howto_ipa {
+    line-height: 70pt;
+}
+.howto details:nth-of-type(2) .syllableconstruction {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    left: 2ch;
+    top: 0;
+    width: 40px;
+    height: 40px;
+}
+.syll_01 {
+    width: 100%;
+    height: 40%;
+    border-style: dashed dashed none dashed;
+    border-color: blueviolet;
+    border-width: thin;
+}
+.syll_02 {
+    width: 100%;
+    height: 20%;
+    border-style: dashed dashed none dashed;
+    border-color: blueviolet;
+    border-width: thin;
+}
+.syll_03 {
+    width: 100%;
+    height: 40%;
+    border-style: dashed;
+    border-color: blueviolet;
+    border-width: thin;
+}
+.syll_04 {
+    width: 100%;
+    height: 60%;
+    border-style: dashed dashed none dashed;
+    border-color: blueviolet;
+    border-width: thin;
+}
+.syll_05 {
+    width: 60%;
+    height: 60%;
+    border-style: dashed dashed none dashed;
+    border-color: blueviolet;
+    border-width: thin;
+}
+.syll_06 {
+    width: 40%;
+    height: 60%;
+    border-style: dashed dashed none none;
+    border-color: blueviolet;
+    border-width: thin;
+    position: absolute;
+    top: 0;
+    right: -3px;
+}
+.howto_yellow {
+    position: relative;
+}
+.howto_yellow:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:rgb(255, 255, 0);
+right: 100px;
+top: 20px;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+.howto_red {
+    position: relative;
+}
+.howto_red:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:fuchsia;
+right: 100px;
+top: 20px;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+.howto_purple {
+    position: relative;
+}
+.howto_purple:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:blueviolet;
+right: 100px;
+top: 20px;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+.howto_blue {
+    position: relative;
+}
+.howto_blue:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:rgb(38, 183, 241);
+right: 100px;
+top: 20px;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+.howto_brown {
+    position: relative;
+}
+.howto_brown:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:brown;
+right: 100px;
+top: 20px;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+.howto details:last-of-type .howto_ipa .howto_train {
+    border: none;
+}
+
+/* MAIN */
+.main {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    z-index: 0;
+    background-color: white;
+    /* height: 100%; */
+    /* width: 100%; */
+}
+.script {
+    white-space: nowrap;
+    display: flex;
+    height: 50%;
+
+    font-family: "TrainSpeech";
+    font-size: 32pt;
+    background-color: rgb(255, 255, 255);
+    position: static;
+    align-items: flex-end;
+    padding-bottom: 3%;
+    /* padding-top: 10%; */
+    /* padding-left: 1ch; */
+}
+
+/* dots */
+.brown {
+position: relative;
+}
+.brown:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:brown;
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+
+.blue {
+position: relative;
+}
+.blue:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:rgb(38, 183, 241);
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+
+.purple {
+position: relative;
+}
+.purple:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:blueviolet;
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+
+.red {
+position: relative;
+}
+.red:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:fuchsia;
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+
+.yellow {
+position: relative;
+}
+.yellow:before {
+content: '';
+position: absolute;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color:rgb(255, 255, 0);
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 50%;
+}
+
+.section-lower {
+    display: inline-block;
+    margin-top: 200px;
+}
+.section-upper {
+    display: inline-block;
+    margin-top: 100px;
+}
+
+/* sounds section */
+.sounds {
+    /* white-space: nowrap; */
+    margin: 0;
+    display: flex;
+    height: 5%;
+    background-color: white;
+    align-items: flex-start;
+    font-family: "TrainSpeech";
+    font-size: 32pt;
+    width: max-content;
+}
+.sound {
+    position: relative;
+    height: 100%;
+    /* cursor: pointer; */
+}
+audio {
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.sound__button {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    pointer-events: none;
+}
+audio:playing + .sound__button {
+    background-color: white;
+}
+.sound_emptydiv{
+    background-color: white;
+}
+
+.button_brown{
+    background-color: brown;
+    top: 60%;
+}
+.button_blue {
+    background-color: rgb(38, 183, 241);
+    top: 80%;
+}
+.button_purple {
+    background-color:blueviolet;
+    top: 40%;
+}
+.button_red {
+    background-color: fuchsia;
+    top: 20%;
+}
+.button_green {
+    background-color: rgb(255, 255, 0);
+    top: 0;
+}
+
+/* sound width */
+.width5ch {
+    width: 5ch; /*change width for each sound unit*/
+}
+.width4ch {
+    width: 4ch;
+}
+.width2ch {
+    width: 2ch;
+}
+.width3ch {
+    width: 3ch;
+}
+.width1ch {
+    width: 1ch;
+}
+.width1halfch {
+    width: 1.5ch;
+}
+
+/* explaination */
+.howtoread {
+    white-space: nowrap;
+    width: 100%;
+    height: 45%;
+    align-self: flex-start;
+    left: 0;
+    position: sticky;
+    position: -webkit-sticky;
+    background-color: rgb(255, 255, 255);
+
+    display: flex;
+    align-items:center;
+}
+/* .howto_script {
+    font-family: "TrainSpeech";
+    font-size: 32pt;
+    width: 75px;
+    color: black;
+    background-color:white;
+}
+.howto_meaning {
+    font-family: 'Recursive', monospace;
+    font-size: 9pt;
+    line-height: 44pt;
+    width: 100px;
+} */
+
+.main_extra {
+    font-family: "ABCRepro-Medium";
+    font-size: 12pt;
+    line-height: 13pt;
+}

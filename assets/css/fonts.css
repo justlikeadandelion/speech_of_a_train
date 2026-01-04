@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "TrainSpeech";
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+  src: url("../fonts/TrainSpeech_260103-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "ABCRepro-Medium";
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+  src: url("../fonts/ABCRepro-Medium-Trial.woff2") format("woff2");
+}
